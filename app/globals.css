@@ -1,5 +1,783 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
-:root{--bg:#090909;--panel:#141313;--line:#342323;--red:#b51f2a;--red2:#75161d;--text:#f4eeee;--muted:#a99b9b;--gold:#d4b18a}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}body{background-image:radial-gradient(ellipse at 50% 0%,#391116 0%,transparent 48%),linear-gradient(180deg,#0a0909,#101010 60%,#090909);min-height:100vh}button,input{font:inherit}button{cursor:pointer}.shell{width:min(100% - 28px,540px);margin:0 auto;padding:22px 0 34px}.topline{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #452226;padding:0 0 12px;margin-bottom:16px;color:#c9a9a9;font:10px 'DM Mono',monospace;letter-spacing:2px;text-transform:uppercase}.sigil{color:#db343e}.hero{text-align:center;padding:10px 0 17px}.eyebrow{font:10px 'DM Mono',monospace;letter-spacing:3px;color:#d25b62;text-transform:uppercase}.title{font:700 clamp(40px,12vw,64px)/.88 'Cormorant Garamond',Georgia,serif;letter-spacing:1px;margin:10px 0 12px;text-shadow:0 0 25px #8b121c55}.subtitle{color:#c5b5b5;font-size:13px;line-height:1.6;max-width:350px;margin:0 auto}.panel{background:linear-gradient(145deg,#191616,#111010);border:1px solid var(--line);border-radius:13px;padding:15px;margin:12px 0;box-shadow:0 12px 35px #0005}.label{font:10px 'DM Mono',monospace;color:#bd8d8d;letter-spacing:1.6px;text-transform:uppercase}.employee{display:flex;gap:12px;align-items:center;margin-top:10px}.avatar{width:54px;height:54px;border-radius:7px;object-fit:cover;border:1px solid #6b3338;background:#242020}.name{font-size:15px;font-weight:700}.small{font-size:11px;color:var(--muted);margin-top:4px}.progresshead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.count{font:12px 'DM Mono',monospace;color:#e5b4b4}.bar{height:4px;background:#35282a;border-radius:4px;overflow:hidden}.barfill{height:100%;background:linear-gradient(90deg,#79121b,#e23d48);transition:width .3s}.clues{display:grid;gap:7px;margin-top:12px}.clue{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid #2b2424;border-radius:8px;background:#100f0f}.clueIcon{width:26px;height:26px;display:grid;place-items:center;border-radius:50%;font-size:12px;background:#272020;color:#8b7777;flex-shrink:0}.clue.done{border-color:#3b4a39}.clue.done .clueIcon{background:#253222;color:#a4d197}.clue.next{border-color:#8a252d;background:#251315}.clue.next .clueIcon{background:#a3222c;color:white}.clueTitle{font-size:12px;font-weight:600}.clueState{margin-left:auto;font:9px 'DM Mono',monospace;letter-spacing:1px;color:#988b8b}.done .clueState{color:#a4d197}.next .clueState{color:#ff858b}.notice{font-size:12px;line-height:1.5;color:#d5c6c6;text-align:center;padding:13px 8px}.notice strong{color:#f5b7bb}.btn{width:100%;border:1px solid #c0343d;background:linear-gradient(135deg,#a91e29,#68131b);color:white;border-radius:8px;padding:14px 16px;font-weight:700;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;box-shadow:0 6px 20px #8b101b22}.btn:disabled{opacity:.45;cursor:not-allowed}.btn.secondary{background:#211a1b;border-color:#483235;color:#e7d6d6}.field{width:100%;border:1px solid #493235;background:#0c0b0b;border-radius:8px;color:white;padding:12px;margin:8px 0 12px;outline:none}.field:focus{border-color:#b83b44}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}.person{background:#171414;border:1px solid #382829;border-radius:9px;padding:9px;text-align:left;color:white;min-width:0}.person img{width:100%;height:110px;object-fit:cover;border-radius:5px;background:#292020}.person span{display:block;font-size:12px;font-weight:600;padding:8px 1px 2px}.person:focus,.person:hover{border-color:#d24a54}.error{color:#ff8d94;font-size:12px;line-height:1.5}.success{color:#b4dba9;font-size:12px;line-height:1.5}.footer{font:9px 'DM Mono',monospace;text-align:center;letter-spacing:1.5px;color:#695e5e;padding-top:12px}.question{font:600 25px/1.1 'Cormorant Garamond',Georgia,serif;margin:12px 0}.stamp{display:inline-block;border:2px solid #a92630;color:#ef626b;padding:5px 8px;font:11px 'DM Mono',monospace;letter-spacing:2px;transform:rotate(-2deg);margin:4px 0 10px}.winner{text-align:center;padding:25px 15px}.winner img{width:140px;height:140px;object-fit:cover;border-radius:50%;border:3px solid #d13b45;box-shadow:0 0 50px #a10c1e66;margin:18px auto}.winner h2{font:700 42px/.95 'Cormorant Garamond',Georgia,serif;margin:8px 0}.winner .big{font:11px 'DM Mono',monospace;letter-spacing:2px;color:#ff8289}.searchlabel{display:block;margin-top:15px}.hidden{display:none!important}@media(min-height:800px){.shell{padding-top:30px}.hero{padding-top:20px}.panel{padding:17px}.clue{padding:12px}}
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&family=Special+Elite&family=IM+Fell+English:ital@0;1&display=swap");
+:root {
+  --bg: #050505;
+  --panel: #141313;
+  --line: #342323;
+  --red: #8a0303;
+  --red2: #4a0000;
+  --text: #fbf4ea;
+  --muted: #d2c3c3;
+  --gold: #c9b88a;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "IM Fell English", Georgia, serif;
+}
+body {
+  background-image:
+    radial-gradient(ellipse at 50% 0%, #391116 0%, transparent 48%),
+    linear-gradient(180deg, #0a0909, #101010 60%, #090909);
+  min-height: 100vh;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+.shell {
+  width: min(100% - 28px, 540px);
+  margin: 0 auto;
+  padding: 22px 0 34px;
+}
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #452226;
+  padding: 0 0 12px;
+  margin-bottom: 16px;
+  color: #c9a9a9;
+  font:
+    10px "Special Elite",
+    monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.sigil {
+  color: #db343e;
+}
+.hero {
+  text-align: center;
+  padding: 10px 0 17px;
+}
+.eyebrow {
+  font:
+    10px "Special Elite",
+    monospace;
+  letter-spacing: 3px;
+  color: #d25b62;
+  text-transform: uppercase;
+}
+.title {
+  font:
+    400 clamp(34px, 10vw, 54px)/1.05 "Rubik Wet Paint",
+    Georgia,
+    serif;
+  letter-spacing: 1px;
+  margin: 10px 0 12px;
+  text-shadow: 0 0 25px #8b121c55;
+}
+.subtitle {
+  color: #c5b5b5;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 350px;
+  margin: 0 auto;
+}
+.panel {
+  background: linear-gradient(145deg, #191616, #111010);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 15px;
+  margin: 12px 0;
+  box-shadow: 0 12px 35px #0005;
+}
+.label {
+  font:
+    10px "Special Elite",
+    monospace;
+  color: #bd8d8d;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+.employee {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+.avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 7px;
+  object-fit: cover;
+  border: 1px solid #6b3338;
+  background: #242020;
+}
+.name {
+  font-size: 15px;
+  font-weight: 700;
+}
+.small {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.progresshead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.count {
+  font:
+    12px "Special Elite",
+    monospace;
+  color: #e5b4b4;
+}
+.bar {
+  height: 4px;
+  background: #35282a;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.barfill {
+  height: 100%;
+  background: linear-gradient(90deg, #79121b, #e23d48);
+  transition: width 0.3s;
+}
+.clues {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+}
+.clue {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #2b2424;
+  border-radius: 8px;
+  background: #100f0f;
+}
+.clueIcon {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 12px;
+  background: #272020;
+  color: #8b7777;
+  flex-shrink: 0;
+}
+.clue.done {
+  border-color: #3b4a39;
+}
+.clue.done .clueIcon {
+  background: #253222;
+  color: #a4d197;
+}
+.clue.next {
+  border-color: #8a252d;
+  background: #251315;
+}
+.clue.next .clueIcon {
+  background: #a3222c;
+  color: white;
+}
+.clueTitle {
+  font-size: 12px;
+  font-weight: 600;
+}
+.clueState {
+  margin-left: auto;
+  font:
+    9px "Special Elite",
+    monospace;
+  letter-spacing: 1px;
+  color: #988b8b;
+}
+.done .clueState {
+  color: #a4d197;
+}
+.next .clueState {
+  color: #ff858b;
+}
+.notice {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #d5c6c6;
+  text-align: center;
+  padding: 13px 8px;
+}
+.notice strong {
+  color: #f5b7bb;
+}
+.btn {
+  width: 100%;
+  border: 1px solid #c0343d;
+  background: linear-gradient(135deg, #a91e29, #68131b);
+  color: white;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  box-shadow: 0 6px 20px #8b101b22;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn.secondary {
+  background: #211a1b;
+  border-color: #483235;
+  color: #e7d6d6;
+}
+.field {
+  width: 100%;
+  border: 1px solid #493235;
+  background: #0c0b0b;
+  border-radius: 8px;
+  color: white;
+  padding: 12px;
+  margin: 8px 0 12px;
+  outline: none;
+}
+.field:focus {
+  border-color: #b83b44;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin: 12px 0;
+}
+.person {
+  background: #171414;
+  border: 1px solid #382829;
+  border-radius: 9px;
+  padding: 9px;
+  text-align: left;
+  color: white;
+  min-width: 0;
+}
+.person img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 5px;
+  background: #292020;
+}
+.person span {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 1px 2px;
+}
+.person:focus,
+.person:hover {
+  border-color: #d24a54;
+}
+.error {
+  color: #ff8d94;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.success {
+  color: #b4dba9;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.footer {
+  font:
+    9px "Special Elite",
+    monospace;
+  text-align: center;
+  letter-spacing: 1.5px;
+  color: #695e5e;
+  padding-top: 12px;
+}
+.question {
+  font:
+    400 22px/1.25 "Rubik Wet Paint",
+    Georgia,
+    serif;
+  margin: 12px 0;
+}
+.stamp {
+  display: inline-block;
+  border: 2px solid #a92630;
+  color: #ef626b;
+  padding: 5px 8px;
+  font:
+    11px "Special Elite",
+    monospace;
+  letter-spacing: 2px;
+  transform: rotate(-2deg);
+  margin: 4px 0 10px;
+}
+.winner {
+  text-align: center;
+  padding: 25px 15px;
+}
+.winner img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #d13b45;
+  box-shadow: 0 0 50px #a10c1e66;
+  margin: 18px auto;
+}
+.winner h2 {
+  font:
+    400 34px/1.1 "Rubik Wet Paint",
+    Georgia,
+    serif;
+  margin: 8px 0;
+}
+.winner .big {
+  font:
+    11px "Special Elite",
+    monospace;
+  letter-spacing: 2px;
+  color: #ff8289;
+}
+.searchlabel {
+  display: block;
+  margin-top: 15px;
+}
+.hidden {
+  display: none !important;
+}
+@media (min-height: 800px) {
+  .shell {
+    padding-top: 30px;
+  }
+  .hero {
+    padding-top: 20px;
+  }
+  .panel {
+    padding: 17px;
+  }
+  .clue {
+    padding: 12px;
+  }
+}
 
-.suspectGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0}.suspectCard{min-height:112px;text-align:left;display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid #3b292b;border-radius:9px;background:linear-gradient(145deg,#211719,#111010);color:#f4eeee}.suspectCard strong{font:600 20px/1 'Cormorant Garamond',Georgia,serif}.suspectCard>span:last-child{font-size:10px;line-height:1.4;color:#ad9b9b}.suspectCard .suspectMark{font:9px 'DM Mono',monospace;letter-spacing:1px;color:#d25b62}.suspectCard.selected{border-color:#e04b55;background:linear-gradient(145deg,#3b171b,#191112);box-shadow:0 0 0 1px #8f252d66}.suspectCard:focus-visible{outline:2px solid #f08b91;outline-offset:2px}@media(max-width:360px){.suspectGrid{grid-template-columns:1fr}.suspectCard{min-height:88px}}
+.suspectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px 0;
+}
+.suspectCard {
+  min-height: 112px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #3b292b;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #211719, #111010);
+  color: #f4eeee;
+}
+.suspectCard strong {
+  font:
+    400 17px/1.15 "Rubik Wet Paint",
+    Georgia,
+    serif;
+}
+.suspectCard > span:last-child {
+  font-size: 10px;
+  line-height: 1.4;
+  color: #ad9b9b;
+}
+.suspectCard .suspectMark {
+  font:
+    9px "Special Elite",
+    monospace;
+  letter-spacing: 1px;
+  color: #d25b62;
+}
+.suspectCard.selected {
+  border-color: #e04b55;
+  background: linear-gradient(145deg, #3b171b, #191112);
+  box-shadow: 0 0 0 1px #8f252d66;
+}
+.suspectCard:focus-visible {
+  outline: 2px solid #f08b91;
+  outline-offset: 2px;
+}
+@media (max-width: 360px) {
+  .suspectGrid {
+    grid-template-columns: 1fr;
+  }
+  .suspectCard {
+    min-height: 88px;
+  }
+}
+
+/* ===== ASYLUM MURDER THEME ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background:
+    radial-gradient(ellipse at center, transparent 55%, #000000cc 100%),
+    repeating-linear-gradient(0deg, #0000 0 3px, #00000014 3px 4px);
+  animation: flicker 6s infinite;
+}
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.55;
+  }
+  94% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.7;
+  }
+}
+.title {
+  color: #c1121f;
+  text-shadow:
+    0 0 18px #8a0303aa,
+    2px 3px 0 #000;
+  animation: twitch 7s infinite;
+}
+@keyframes twitch {
+  0%,
+  96%,
+  100% {
+    transform: none;
+  }
+  97% {
+    transform: translate(-2px, 1px) skewX(2deg);
+  }
+  98% {
+    transform: translate(2px, -1px);
+  }
+}
+.panel {
+  background: linear-gradient(145deg, #15110f, #0b0909);
+  border: 1px solid #3a1a1a;
+  border-radius: 2px;
+  box-shadow:
+    inset 0 0 40px #000c,
+    0 0 0 1px #000,
+    0 12px 35px #000a;
+  position: relative;
+}
+.panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 40px;
+  width: 6px;
+  height: 22px;
+  background: linear-gradient(#8a0303, #5a0000);
+  border-radius: 0 0 6px 6px;
+  box-shadow:
+    14px 0 0 -1px #6b0000,
+    30px 0 0 -2px #8a0303;
+}
+.btn {
+  border-radius: 2px;
+  border: 1px solid #8a0303;
+  background: linear-gradient(135deg, #7a0505, #3a0000);
+  font-family: "Special Elite", monospace;
+  box-shadow:
+    0 0 14px #8a030366,
+    inset 0 0 10px #000a;
+}
+.btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #a30808, #4a0000);
+  box-shadow: 0 0 24px #c1121f99;
+}
+.btn.secondary {
+  background: #120d0d;
+  border-color: #3a2323;
+}
+.field {
+  border-radius: 2px;
+  font-family: "Special Elite", monospace;
+  background: #070505;
+  border-color: #4a2424;
+}
+.stamp {
+  border: 3px double #b0121c;
+  color: #d4222c;
+  background: #b0121c14;
+  text-shadow: 0 0 6px #b0121c66;
+}
+.avatar,
+.person img,
+.winner img {
+  filter: grayscale(0.85) contrast(1.15) sepia(0.25);
+}
+.winner img {
+  border-color: #8a0303;
+  box-shadow: 0 0 60px #8a0303aa;
+}
+.person,
+.suspectCard,
+.clue {
+  border-radius: 2px;
+}
+.person:hover,
+.suspectCard:hover {
+  border-color: #c1121f;
+  box-shadow: 0 0 16px #8a030388;
+}
+.barfill {
+  background: linear-gradient(90deg, #4a0000, #c1121f);
+  box-shadow: 0 0 10px #c1121f;
+}
+
+/* ===== CLEARER TEXT ===== */
+body {
+  font-size: 16px;
+  line-height: 1.55;
+  text-shadow: 0 1px 2px #000;
+}
+.eyebrow {
+  font-size: 12px;
+  color: #ff6b73;
+}
+.topline {
+  font-size: 12px;
+  color: #e3c4c4;
+}
+.subtitle {
+  font-size: 16px;
+  color: #f0e4e4;
+}
+.label {
+  font-size: 12px;
+  color: #e0aaaa;
+  letter-spacing: 1.4px;
+}
+.small {
+  font-size: 14px;
+  color: #d8c9c9;
+}
+.notice {
+  font-size: 15px;
+  color: #f2e6e6;
+}
+.name {
+  font-size: 17px;
+}
+.clueTitle {
+  font-size: 15px;
+}
+.clueState {
+  font-size: 11px;
+  color: #c9bcbc;
+}
+.count {
+  font-size: 14px;
+}
+.person span {
+  font-size: 15px;
+}
+.suspectCard > span:last-child {
+  font-size: 13px;
+  color: #d6c6c6;
+}
+.suspectCard .suspectMark {
+  font-size: 11px;
+}
+.error {
+  font-size: 15px;
+  color: #ff7a82;
+}
+.success {
+  font-size: 15px;
+  color: #c6ecba;
+}
+.btn {
+  font-size: 14px;
+}
+.footer {
+  font-size: 11px;
+  color: #9a8a8a;
+}
+.field {
+  font-size: 16px;
+  color: #fff;
+}
+.panel {
+  background: linear-gradient(145deg, #1b1512, #0e0b0b);
+}
+
+/* ===== EXTRA SPOOKY ===== */
+body {
+  background-image:
+    radial-gradient(circle at 0% 100%, #5a0000 0, transparent 22%),
+    radial-gradient(circle at 100% 100%, #4a0000 0, transparent 18%),
+    radial-gradient(ellipse at 50% 0%, #4a0f14 0%, transparent 50%),
+    linear-gradient(180deg, #0a0909, #101010 60%, #090909);
+}
+body::after {
+  /* drifting fog */
+  content: "";
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 49;
+  background:
+    radial-gradient(ellipse 40% 25% at 20% 80%, #ffffff0d, transparent 70%),
+    radial-gradient(ellipse 50% 30% at 80% 60%, #ffffff0a, transparent 70%),
+    radial-gradient(ellipse 45% 25% at 50% 95%, #ffffff10, transparent 70%);
+  filter: blur(18px);
+  animation: fog 28s ease-in-out infinite alternate;
+}
+@keyframes fog {
+  from {
+    transform: translateX(-6%) translateY(2%);
+  }
+  to {
+    transform: translateX(6%) translateY(-3%);
+  }
+}
+.title {
+  animation:
+    twitch 7s infinite,
+    heartbeat 2.4s infinite;
+}
+@keyframes heartbeat {
+  0%,
+  100% {
+    text-shadow:
+      0 0 14px #8a0303aa,
+      2px 3px 0 #000;
+  }
+  14% {
+    text-shadow:
+      0 0 34px #ff1e2dcc,
+      2px 3px 0 #000;
+  }
+  28% {
+    text-shadow:
+      0 0 16px #8a0303aa,
+      2px 3px 0 #000;
+  }
+  42% {
+    text-shadow:
+      0 0 28px #ff1e2daa,
+      2px 3px 0 #000;
+  }
+}
+.eyebrow {
+  animation: dying 5s infinite;
+}
+@keyframes dying {
+  0%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 0.2;
+  }
+  94% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.4;
+  }
+}
+.stamp {
+  animation: slam 0.5s ease-out both;
+}
+@keyframes slam {
+  from {
+    transform: rotate(-2deg) scale(2.2);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(-2deg) scale(1);
+    opacity: 1;
+  }
+}
+.clue.next {
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 #c1121f00;
+  }
+  50% {
+    box-shadow: 0 0 18px #c1121f88;
+  }
+}
+.panel::after {
+  animation: drip 5s ease-in infinite;
+  transform-origin: top;
+}
+@keyframes drip {
+  0%,
+  60% {
+    transform: scaleY(1);
+  }
+  85% {
+    transform: scaleY(1.7);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* ===== CLUE RECORDING LOADER ===== */
+.recording {
+  text-align: center;
+  border-color: #8a0303;
+}
+.spinner {
+  width: 34px;
+  height: 34px;
+  margin: 6px auto 10px;
+  border: 3px solid #3a1a1a;
+  border-top-color: #c1121f;
+  border-radius: 50%;
+  box-shadow: 0 0 16px #8a030388;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.dots::after {
+  content: "";
+  animation: dots 1.4s steps(1) infinite;
+}
+@keyframes dots {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+}

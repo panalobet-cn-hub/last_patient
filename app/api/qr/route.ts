@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import QRCode from "qrcode";
-import { safeEqual } from "@/lib/session";
+import { safeEqual, clueKey } from "@/lib/session";
+
 export const runtime = "nodejs";
 export async function POST(req: Request) {
   const { password, stage } = await req.json().catch(() => ({}));
@@ -19,6 +20,11 @@ export async function POST(req: Request) {
   };
   if (typeof stage !== "string" || !stages[stage])
     return NextResponse.json({ error: "Unknown QR stage." }, { status: 400 });
+  if (!process.env.CLUE_SECRET)
+    return NextResponse.json(
+      { error: "Set CLUE_SECRET first." },
+      { status: 400 },
+    );
   const base = process.env.NEXT_PUBLIC_SITE_URL;
   if (!base)
     return NextResponse.json(
@@ -45,7 +51,7 @@ export async function POST(req: Request) {
     );
   }
   const png = await QRCode.toBuffer(
-    `${base.replace(/\/$/, "")}${stages[stage]}`,
+    `${base.replace(/\/$/, "")}${stages[stage]}&k=${clueKey(Number(stage))}`,
     {
       type: "png",
       width: 900,

@@ -31,6 +31,7 @@ export default function Home() {
   const [suspect, setSuspect] = useState("");
   const [winnerReveal, setWinnerReveal] = useState<any>(null);
   const scanned = useRef(false);
+  const [recordingClue, setRecordingClue] = useState<number | null>(null);
   const loadState = useCallback(async () => {
     const r = await fetch("/api/state", { cache: "no-store" });
     const d = await r.json();
@@ -156,16 +157,20 @@ export default function Home() {
       setBusy(false);
     }
   }
-  async function scanClue(n: number) {
+  async function scanClue(n: number, key: string) {
+    setRecordingClue(n);
     setBusy(true);
     setError("");
     setMessage("");
     try {
-      const r = await fetch("/api/clue", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ clue: n }),
-      });
+      const [r] = await Promise.all([
+        fetch("/api/clue", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ clue: n, key }),
+        }),
+        new Promise((res) => setTimeout(res, 1500)), // keeps loader visible
+      ]);
       const d = await r.json();
       if (!r.ok) throw new Error(d.error);
       await loadState();
@@ -177,6 +182,7 @@ export default function Home() {
     } catch (e: any) {
       setError(e.message ?? "Could not record clue.");
     } finally {
+      setRecordingClue(null);
       setBusy(false);
     }
   }
@@ -186,7 +192,7 @@ export default function Home() {
     const n = Number(params.get("clue"));
     if (n >= 1 && n <= 4) {
       scanned.current = true;
-      if (state.session) void scanClue(n);
+      if (state.session) void scanClue(n, params.get("k") ?? "");
       else
         setMessage(
           `Clue ${n} scanned. Identify yourself below; the clue will be ready to record after you start or resume.`,
@@ -298,11 +304,11 @@ export default function Home() {
           PATIENT
         </h1>
         <p className="subtitle">
-          A murder has occurred. Someone inside these walls knows the truth.
+          Murderer is inside these walls.
           <br />
-          <span style={{ color: "#df777d" }}>
+          {/* <span style={{ color: "#df777d" }}>
             Find the evidence. Face the illusion. Discover who you are.
-          </span>
+          </span> */}
         </p>
       </header>
       {winnerReveal?.outcome === "already_won" && (
@@ -327,8 +333,7 @@ export default function Home() {
           <section className="panel">
             <div className="label">01 / Identify yourself</div>
             <p className="small" style={{ lineHeight: 1.6 }}>
-              Find your own employee photo. Your investigation is saved
-              automatically on this device.
+              Select Your Profile to start the investigation.
             </p>
             <label className="searchlabel label" htmlFor="employee-search">
               <Search size={12} style={{ display: "inline", marginRight: 5 }} />
@@ -562,13 +567,30 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="clueState">
-                      {done ? "COMPLETE" : isNext ? "NEXT" : "LOCKED"}
+                      {done
+                        ? "COMPLETE"
+                        : recordingClue === n
+                          ? "RECORDING…"
+                          : isNext
+                            ? "NEXT"
+                            : "LOCKED"}
                     </div>
                   </div>
                 );
               })}
             </div>
           </section>
+          {recordingClue !== null && (
+            <section className="panel recording">
+              <div className="spinner" />
+              <div className="notice">
+                <strong>Securing evidence for Clue {recordingClue}</strong>
+                <span className="dots" />
+                <br />
+                Updating the case file…
+              </div>
+            </section>
+          )}
           {count < 4 ? (
             <section className="panel">
               <div className="notice">
@@ -654,9 +676,9 @@ export default function Home() {
           <p className="error">{error}</p>
         </section>
       )}
-      <p className="footer">
+      {/* <p className="footer">
         NO PHONE TRICKS. NO SECOND CHANCES. FOLLOW THE EVIDENCE.
-      </p>
+      </p> */}
     </main>
   );
 }
