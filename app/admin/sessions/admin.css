@@ -1,0 +1,74 @@
+/* ===== ADMIN SESSION TABLE ===== */
+.adminShell {
+  width: min(100% - 28px, 860px);
+  margin: 0 auto;
+  padding: 30px 0 40px;
+}
+.tableWrap {
+  overflow-x: auto;
+}
+.sessionTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.sessionTable th {
+  padding: 10px 14px;
+  border-bottom: 1px solid #452226;
+  font:
+    12px "Special Elite",
+    monospace;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #e0aaaa;
+  white-space: nowrap;
+}
+.sessionTable td {
+  padding: 14px;
+  border-bottom: 1px solid #2b2424;
+  vertical-align: middle;
+}
+.sessionTable tbody tr:last-child td {
+  border-bottom: none;
+}
+.sessionTable tbody tr:hover {
+  background: #1f1213;
+}
+.sessionTable .actionCell {
+  text-align: right;
+  white-space: nowrap;
+}
+.sessionName {
+  font-weight: 700;
+  font-size: 17px;
+}
+.statusBadge {
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid #483235;
+  border-radius: 2px;
+  font:
+    11px "Special Elite",
+    monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #c9bcbc;
+}
+.statusBadge.live {
+  border-color: #8a252d;
+  color: #ff858b;
+}
+.statusBadge.done {
+  border-color: #3b4a39;
+  color: #a4d197;
+}
+.btn.inline {
+  width: auto;
+  padding: 9px 14px;
+  font-size: 12px;
+}
+.emptyRow {
+  text-align: center;
+  color: #c5b5b5;
+  padding: 24px 14px;
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import "./admin.css";
 import { useEffect, useState } from "react";
 
 type Session = {
@@ -74,77 +75,94 @@ export default function SessionManagementPage() {
     }
   }
 
+  function getStatus(session: Session) {
+    if (session.completed_at) return { label: "Completed", cls: "done" };
+    if (session.active) return { label: "In progress", cls: "live" };
+    return { label: "Inactive", cls: "" };
+  }
+
   return (
-    <main className="min-h-screen bg-[#100b0d] p-6 text-white sm:p-10">
-      <div className="mx-auto max-w-5xl">
-        <p className="text-sm uppercase tracking-[0.3em] text-red-500">
-          The Last Patient
-        </p>
-
-        <h1 className="mt-3 text-3xl font-bold">Session Management</h1>
-
-        <p className="mt-2 text-sm text-gray-400">
+    <main className="adminShell">
+      <div className="hero">
+        <div className="eyebrow">The Last Patient</div>
+        <h1 className="title">Session Management</h1>
+        <p className="subtitle">
           Review player progress and reset accidental registrations.
         </p>
+      </div>
 
+      <div style={{ textAlign: "center" }}>
         <button
+          className="btn secondary inline"
           onClick={() => void loadSessions()}
-          className="mt-6 rounded-lg border border-red-900 px-4 py-2 hover:bg-red-950"
         >
           Refresh sessions
         </button>
+      </div>
 
-        {message && (
-          <p role="status" className="my-4 text-sm text-red-300">
-            {message}
-          </p>
-        )}
+      {message && (
+        <p role="status" className="notice">
+          <strong>{message}</strong>
+        </p>
+      )}
 
+      <section className="panel">
         {loading ? (
-          <p className="mt-8 text-gray-400">Loading sessions...</p>
+          <p className="emptyRow">Loading sessions...</p>
         ) : (
-          <div className="mt-6 space-y-3">
-            {sessions.map((session) => (
-              <section
-                key={session.id}
-                className="rounded-xl border border-red-950 bg-[#1a1215] p-5"
-              >
-                <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-                  <div>
-                    <h2 className="font-semibold">{session.employee_name}</h2>
+          <div className="tableWrap">
+            <table className="sessionTable">
+              <thead>
+                <tr>
+                  <th>Employee</th>
+                  <th>Clues</th>
+                  <th>Status</th>
+                  <th style={{ textAlign: "right" }}>Action</th>
+                </tr>
+              </thead>
 
-                    <p className="mt-1 text-sm text-gray-400">
-                      Clues: {session.clue_count}/4
-                    </p>
+              <tbody>
+                {sessions.map((session) => {
+                  const status = getStatus(session);
 
-                    <p className="mt-1 text-sm text-gray-400">
-                      {session.completed_at
-                        ? "Completed"
-                        : session.active
-                          ? "In progress"
-                          : "Inactive"}
-                    </p>
-                  </div>
+                  return (
+                    <tr key={session.id}>
+                      <td className="sessionName">{session.employee_name}</td>
+                      <td>{session.clue_count}/4</td>
+                      <td>
+                        <span className={`statusBadge ${status.cls}`}>
+                          {status.label}
+                        </span>
+                      </td>
+                      <td className="actionCell">
+                        {session.active && !session.completed_at && (
+                          <button
+                            className="btn inline"
+                            disabled={busyId === session.id}
+                            onClick={() => void resetSession(session)}
+                          >
+                            {busyId === session.id
+                              ? "Resetting..."
+                              : "Reset session"}
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
 
-                  {session.active && !session.completed_at && (
-                    <button
-                      disabled={busyId === session.id}
-                      onClick={() => void resetSession(session)}
-                      className="rounded-lg bg-red-800 px-4 py-2 font-medium hover:bg-red-700 disabled:opacity-50"
-                    >
-                      {busyId === session.id ? "Resetting..." : "Reset session"}
-                    </button>
-                  )}
-                </div>
-              </section>
-            ))}
-
-            {sessions.length === 0 && (
-              <p className="text-gray-400">No sessions found.</p>
-            )}
+                {sessions.length === 0 && (
+                  <tr>
+                    <td colSpan={4} className="emptyRow">
+                      No sessions found.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </div>
         )}
-      </div>
+      </section>
     </main>
   );
 }
