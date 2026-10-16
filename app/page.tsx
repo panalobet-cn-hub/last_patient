@@ -622,40 +622,44 @@ export default function Home() {
               )}
             </section>
           ) : (
-            <section className="panel final-test">
-              <div className="stamp">FINAL TEST</div>
-              <div className="question">
-                Which figure is waiting inside your mind?
-              </div>
-              <p className="small" style={{ lineHeight: 1.6 }}>
-                Choose the illusion you saw in the asylum. There is no wrong
-                choice — the final truth is that the killer was always you, the
-                last patient.
-              </p>
-              <form onSubmit={submitAnswer}>
-                <div className="suspectGrid">
-                  {SUSPECTS.map((item) => (
-                    <button
-                      type="button"
-                      key={item.id}
-                      className={`suspectCard ${
-                        suspect === item.id ? "selected" : ""
-                      }`}
-                      onClick={() => setSuspect(item.id)}
-                    >
-                      <span className="suspectMark">ILLUSION {item.mark}</span>
-
-                      <strong>{item.name}</strong>
-
-                      <span>{item.desc}</span>
-                    </button>
-                  ))}
+            <div className="final-test-overlay">
+              <section className="panel final-test">
+                <div className="stamp">FINAL TEST</div>
+                <div className="question" id="final-test-title">
+                  Which figure is waiting inside your mind?
                 </div>
-                <button className="btn" disabled={busy || !suspect}>
-                  ACCEPT THE ILLUSION
-                </button>
-              </form>
-            </section>
+                <p className="small" style={{ lineHeight: 1.6 }}>
+                  Choose the illusion you saw in the asylum. There is no wrong
+                  choice — the final truth is that the killer was always you,
+                  the last patient.
+                </p>
+                <form onSubmit={submitAnswer}>
+                  <div className="suspectGrid">
+                    {SUSPECTS.map((item) => (
+                      <button
+                        type="button"
+                        key={item.id}
+                        className={`suspectCard ${
+                          suspect === item.id ? "selected" : ""
+                        }`}
+                        onClick={() => setSuspect(item.id)}
+                      >
+                        <span className="suspectMark">
+                          ILLUSION {item.mark}
+                        </span>
+
+                        <strong>{item.name}</strong>
+
+                        <span>{item.desc}</span>
+                      </button>
+                    ))}
+                  </div>
+                  <button className="btn" disabled={busy || !suspect}>
+                    ACCEPT THE ILLUSION
+                  </button>
+                </form>
+              </section>
+            </div>
           )}
         </>
       )}
