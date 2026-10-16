@@ -90,6 +90,10 @@ button {
   padding: 15px;
   margin: 12px 0;
   box-shadow: 0 12px 35px #0005;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .label {
   font:
@@ -258,7 +262,6 @@ button {
   background: #171414;
   border: 1px solid #382829;
   border-radius: 9px;
-  padding: 9px;
   text-align: left;
   color: white;
   min-width: 0;
@@ -271,10 +274,11 @@ button {
   background: #292020;
 }
 .person span {
+  text-align: center;
   display: block;
-  font-size: 12px;
+  font-size: 22px !important;
   font-weight: 600;
-  padding: 8px 1px 2px;
+  padding: 8px;
 }
 .person:focus,
 .person:hover {
@@ -579,7 +583,7 @@ body {
   color: #f2e6e6;
 }
 .name {
-  font-size: 17px;
+  font-size: 30px;
 }
 .clueTitle {
   font-size: 15px;

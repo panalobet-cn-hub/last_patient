@@ -361,10 +361,10 @@ export default function Home() {
                         selected?.id === p.id ? "#d24a54" : undefined,
                     }}
                   >
-                    <img
+                    {/* <img
                       src={p.photo_url || "/patient-placeholder.svg"}
                       alt=""
-                    />
+                    /> */}
                     <span>{p.name}</span>
                     {selected?.id === p.id && (
                       <small style={{ color: "#ff858b" }}>SELECTED</small>
@@ -469,11 +469,7 @@ export default function Home() {
           <section className="panel">
             <div className="label">Investigator identity confirmed</div>
             <div className="employee">
-              <img
-                className="avatar"
-                src={activeEmployee.photo_url || "/patient-placeholder.svg"}
-                alt=""
-              />
+              <img className="avatar" src={"/patient-placeholder.svg"} alt="" />
               <div>
                 <div className="name">{activeEmployee.name}</div>
                 <div className="small">
