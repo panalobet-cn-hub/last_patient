@@ -743,41 +743,145 @@ body::after {
   }
 }
 
-/* ===== CLUE RECORDING LOADER ===== */
-.recording {
+/* ===== SPOOKY EVIDENCE RECORDING POPUP ===== */
+
+.recording-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(5, 3, 5, 0.88);
+  backdrop-filter: blur(9px);
+  animation: recordingFadeIn 0.3s ease-out;
+}
+
+.recording-modal {
+  width: 100%;
+  max-width: 430px;
+  padding: 36px 26px;
   text-align: center;
-  border-color: #8a0303;
+  color: #f5eaea;
+  background:
+    radial-gradient(ellipse at top, rgba(139, 0, 0, 0.2), transparent 65%),
+    #100b0d;
+  border: 1px solid #761818;
+  border-radius: 14px;
+  box-shadow:
+    0 0 35px rgba(193, 18, 31, 0.2),
+    inset 0 0 25px rgba(139, 0, 0, 0.08);
+  animation: recordingPulse 2s ease-in-out infinite;
 }
+
+.recording-icon {
+  margin-bottom: 22px;
+}
+
+.recording-kicker {
+  margin: 0 0 12px;
+  color: #c1121f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.recording-modal h2 {
+  margin: 0 0 16px;
+  color: #fff0f0;
+  font-size: clamp(21px, 5vw, 28px);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.recording-clue {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 8px 12px;
+  color: #ffb3b3;
+  background: rgba(193, 18, 31, 0.12);
+  border: 1px solid #541a20;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.recording-description {
+  margin: 0 auto 24px;
+  max-width: 300px;
+  color: #b8a7aa;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
 .spinner {
-  width: 34px;
-  height: 34px;
-  margin: 6px auto 10px;
-  border: 3px solid #3a1a1a;
-  border-top-color: #c1121f;
+  width: 46px;
+  height: 46px;
+  margin: 0 auto;
+  border: 3px solid #321619;
+  border-top-color: #e11d2e;
+  border-right-color: #8a0303;
   border-radius: 50%;
-  box-shadow: 0 0 16px #8a030388;
-  animation: spin 0.9s linear infinite;
+  box-shadow: 0 0 20px #8a030355;
+  animation: spin 0.8s linear infinite;
 }
+
+.recording-progress {
+  height: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: #291316;
+  border-radius: 4px;
+}
+
+.recording-progress-bar {
+  width: 35%;
+  height: 100%;
+  background: #c1121f;
+  box-shadow: 0 0 12px #c1121f;
+  animation: evidenceProgress 1.5s ease-in-out infinite;
+}
+
+.recording-warning {
+  margin: 0;
+  color: #8c555a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
-.dots::after {
-  content: "";
-  animation: dots 1.4s steps(1) infinite;
-}
-@keyframes dots {
-  0% {
-    content: "";
+
+@keyframes recordingFadeIn {
+  from {
+    opacity: 0;
   }
-  25% {
-    content: ".";
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes recordingPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 25px #c1121f22;
   }
   50% {
-    content: "..";
+    box-shadow: 0 0 42px #c1121f55;
   }
-  75% {
-    content: "...";
+}
+
+@keyframes evidenceProgress {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(310%);
   }
 }

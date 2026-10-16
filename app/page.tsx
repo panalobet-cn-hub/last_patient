@@ -570,7 +570,7 @@ export default function Home() {
                       {done
                         ? "COMPLETE"
                         : recordingClue === n
-                          ? "RECORDING…"
+                          ? "PROCESSING…"
                           : isNext
                             ? "NEXT"
                             : "LOCKED"}
@@ -580,17 +580,35 @@ export default function Home() {
               })}
             </div>
           </section>
+
           {recordingClue !== null && (
-            <section className="panel recording">
-              <div className="spinner" />
-              <div className="notice">
-                <strong>Securing evidence for Clue {recordingClue}</strong>
-                <span className="dots" />
-                <br />
-                Updating the case file…
-              </div>
-            </section>
+            <div className="recording-overlay">
+              <section className="recording-modal">
+                <div className="recording-icon">
+                  <div className="spinner" />
+                </div>
+
+                <p className="recording-kicker">THE LAST PATIENT</p>
+
+                <h2>Evidence Is Being Recorded</h2>
+
+                <p className="recording-clue">
+                  CLUE {recordingClue} · CASE FILE UPDATE
+                </p>
+
+                <p className="recording-description">
+                  Securing evidence and updating the investigation records...
+                </p>
+
+                <div className="recording-progress">
+                  <div className="recording-progress-bar" />
+                </div>
+
+                <p className="recording-warning">DO NOT CLOSE THIS WINDOW</p>
+              </section>
+            </div>
           )}
+
           {count < 4 ? (
             <section className="panel">
               <div className="notice">
