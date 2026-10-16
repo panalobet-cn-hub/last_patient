@@ -1,16 +1,12 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LockKeyhole, Check, ScanLine, Search, Skull } from "lucide-react";
+import { CLUES } from "@/data/clues";
+import { SUSPECTS } from "@/data/suspects";
 
 type Employee = { id: string; name: string; photo_url: string | null };
 type Progress = { clue_number: number; completed_at: string };
 type GameState = { session: any; progress: Progress[]; winner: any };
-const CLUES = [
-  "The Patient File",
-  "The Missing Key",
-  "The Doctor’s Notes",
-  "The Final Testimony",
-];
 
 export default function Home() {
   const [state, setState] = useState<GameState>({
@@ -638,40 +634,19 @@ export default function Home() {
               </p>
               <form onSubmit={submitAnswer}>
                 <div className="suspectGrid">
-                  {[
-                    {
-                      id: "the-silent-doctor",
-                      name: "The Silent Doctor",
-                      mark: "01",
-                      desc: "A face behind the glass.",
-                    },
-                    {
-                      id: "the-hollow-nurse",
-                      name: "The Hollow Nurse",
-                      mark: "02",
-                      desc: "Footsteps with no shadow.",
-                    },
-                    {
-                      id: "the-faceless-patient",
-                      name: "The Faceless Patient",
-                      mark: "03",
-                      desc: "Someone wearing your clothes.",
-                    },
-                    {
-                      id: "the-night-attendant",
-                      name: "The Night Attendant",
-                      mark: "04",
-                      desc: "A watcher at the end of the hall.",
-                    },
-                  ].map((item) => (
+                  {SUSPECTS.map((item) => (
                     <button
                       type="button"
                       key={item.id}
-                      className={`suspectCard ${suspect === item.id ? "selected" : ""}`}
+                      className={`suspectCard ${
+                        suspect === item.id ? "selected" : ""
+                      }`}
                       onClick={() => setSuspect(item.id)}
                     >
                       <span className="suspectMark">ILLUSION {item.mark}</span>
+
                       <strong>{item.name}</strong>
+
                       <span>{item.desc}</span>
                     </button>
                   ))}
