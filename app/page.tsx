@@ -644,9 +644,12 @@ export default function Home() {
                         }`}
                         onClick={() => setSuspect(item.id)}
                       >
-                        <span className="suspectMark">
-                          ILLUSION {item.mark}
-                        </span>
+                        <span className="suspectMark">Suspect {item.mark}</span>
+                        <img
+                          className="suspectImage"
+                          src={item.image}
+                          alt={item.name}
+                        />
 
                         <strong>{item.name}</strong>
 
