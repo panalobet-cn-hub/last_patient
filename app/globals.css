@@ -83,6 +83,14 @@ button {
   max-width: 350px;
   margin: 0 auto;
 }
+
+.final-test {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
 .panel {
   background: linear-gradient(145deg, #191616, #111010);
   border: 1px solid var(--line);
@@ -90,10 +98,6 @@ button {
   padding: 15px;
   margin: 12px 0;
   box-shadow: 0 12px 35px #0005;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 .label {
   font:

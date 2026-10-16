@@ -626,7 +626,7 @@ export default function Home() {
               )}
             </section>
           ) : (
-            <section className="panel">
+            <section className="panel final-test">
               <div className="stamp">FINAL TEST</div>
               <div className="question">
                 Which figure is waiting inside your mind?
