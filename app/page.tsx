@@ -278,6 +278,17 @@ export default function Home() {
     );
   return (
     <main className="shell">
+      <video
+        className="asylum-background"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      >
+        <source src="/assets/back.mp4" type="video/mp4" />
+      </video>
+
       <div className="topline">
         <span>
           <Skull
