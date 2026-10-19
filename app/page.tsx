@@ -17,6 +17,7 @@ export default function Home() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [isVideoReady, setIsVideoReady] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -68,6 +69,12 @@ export default function Home() {
       }
     })();
   }, [loadState]);
+
+  useEffect(() => {
+    document.body.classList.toggle("is-loaded", !loading);
+    return () => document.body.classList.remove("is-loaded");
+  }, [loading]);
+
   const count = state.progress.length;
   const next = count + 1;
   async function startGame(employee: Employee) {
@@ -231,9 +238,9 @@ export default function Home() {
         <div className="hero">
           <div className="eyebrow">Patient intake</div>
           <h1 className="title">
-            THE LAST
+            WARD
             <br />
-            PATIENT
+            404
           </h1>
           <p className="subtitle">Opening the case file…</p>
         </div>
@@ -260,7 +267,7 @@ export default function Home() {
           <h2>{winnerReveal.employee?.name ?? "Investigator"}</h2>
           <div className="big">THE MURDERER WAS YOU</div>
           <p className="subtitle" style={{ marginTop: 14 }}>
-            The suspects were illusions. You were the killer — the last patient
+            The suspects were illusions. You were the killer — ward 404 patient
             all along.
           </p>
           <p className="small">
@@ -273,7 +280,7 @@ export default function Home() {
             FIRST TO SOLVE
           </div>
         </section>
-        <p className="footer">THE LAST PATIENT · HALLOWEEN CASE FILE 001</p>
+        <p className="footer">WARD 404 PATIENT · HALLOWEEN CASE FILE 001</p>
       </main>
     );
   return (
@@ -306,9 +313,9 @@ export default function Home() {
       <header className="hero">
         <div className="eyebrow">Blackthorn Psychiatric Asylum · 11:47 PM</div>
         <h1 className="title">
-          THE LAST
+          WARD
           <br />
-          PATIENT
+          404
         </h1>
         <p className="subtitle">
           Murderer is inside these walls.
@@ -591,7 +598,7 @@ export default function Home() {
                   <div className="spinner" />
                 </div>
 
-                <p className="recording-kicker">THE LAST PATIENT</p>
+                <p className="recording-kicker">WARD 404</p>
 
                 <h2>Evidence Is Being Recorded</h2>
 
@@ -642,7 +649,7 @@ export default function Home() {
                 <p className="small" style={{ lineHeight: 1.6 }}>
                   Choose the illusion you saw in the asylum. There is no wrong
                   choice — the final truth is that the killer was always you,
-                  the last patient.
+                  ward 404 patient.
                 </p>
                 <form onSubmit={submitAnswer}>
                   <div className="suspectGrid">
