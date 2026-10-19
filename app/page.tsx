@@ -625,8 +625,7 @@ export default function Home() {
                 {message || (
                   <>
                     Your progress is saved. <strong>Find Clue {next}</strong> in
-                    the physical office and scan its QR code using your phone
-                    camera.
+                    the asylum and scan its QR code using your phone camera.
                   </>
                 )}
               </div>
@@ -647,9 +646,7 @@ export default function Home() {
                   Which figure is waiting inside your mind?
                 </div>
                 <p className="small" style={{ lineHeight: 1.6 }}>
-                  Choose the illusion you saw in the asylum. There is no wrong
-                  choice — the final truth is that the killer was always you,
-                  ward 404 patient.
+                  Choose the murderer based on your investigation.
                 </p>
                 <form onSubmit={submitAnswer}>
                   <div className="suspectGrid">
@@ -676,7 +673,7 @@ export default function Home() {
                     ))}
                   </div>
                   <button className="btn" disabled={busy || !suspect}>
-                    ACCEPT THE ILLUSION
+                    CONFIRM
                   </button>
                 </form>
               </section>

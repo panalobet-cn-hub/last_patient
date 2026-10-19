@@ -85,7 +85,7 @@ export default function SessionManagementPage() {
     <main className="adminShell">
       <div className="hero">
         <div className="eyebrow">The Last Patient</div>
-        <h1 className="title">Session Management</h1>
+        <h1 className="title session">Session Management</h1>
         <p className="subtitle">
           Review player progress and reset accidental registrations.
         </p>
