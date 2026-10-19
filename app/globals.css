@@ -22,10 +22,28 @@ body {
 }
 body {
   background-image:
-    radial-gradient(ellipse at 50% 0%, #391116 0%, transparent 48%),
-    linear-gradient(180deg, #0a0909, #101010 60%, #090909);
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(57, 17, 22, 0.5) 0%,
+      transparent 28%
+    ),
+    url("/assets/img.png");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   min-height: 100vh;
+  margin: 0;
 }
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 button,
 input {
   font: inherit;
@@ -451,7 +469,7 @@ button {
 }
 
 /* ===== ASYLUM MURDER THEME ===== */
-body::before {
+/* body::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -461,7 +479,7 @@ body::before {
     radial-gradient(ellipse at center, transparent 55%, #000000cc 100%),
     repeating-linear-gradient(0deg, #0000 0 3px, #00000014 3px 4px);
   animation: flicker 6s infinite;
-}
+} */
 @keyframes flicker {
   0%,
   100% {
@@ -654,13 +672,13 @@ body {
 }
 
 /* ===== EXTRA SPOOKY ===== */
-body {
+/* body {
   background-image:
     radial-gradient(circle at 0% 100%, #5a0000 0, transparent 22%),
     radial-gradient(circle at 100% 100%, #4a0000 0, transparent 18%),
     radial-gradient(ellipse at 50% 0%, #4a0f14 0%, transparent 50%),
     linear-gradient(180deg, #0a0909, #101010 60%, #090909);
-}
+} */
 body::after {
   /* drifting fog */
   content: "";
