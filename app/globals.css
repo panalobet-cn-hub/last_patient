@@ -52,6 +52,9 @@ button {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+.topline span svg {
+  margin-bottom: 5px;
+}
 .sigil {
   color: #db343e;
 }
