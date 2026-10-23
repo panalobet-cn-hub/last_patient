@@ -332,6 +332,14 @@ button {
   font-size: 12px;
   line-height: 1.5;
 }
+
+#error {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .success {
   color: #b4dba9;
   font-size: 12px;

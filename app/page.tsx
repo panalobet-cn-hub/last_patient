@@ -683,7 +683,7 @@ export default function Home() {
       )}
       {message && !state.session && <p className="notice">{message}</p>}
       {error && (
-        <section className="panel">
+        <section className="panel" id="error">
           <p className="error">{error}</p>
         </section>
       )}
