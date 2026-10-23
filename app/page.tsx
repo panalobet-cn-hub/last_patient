@@ -249,6 +249,12 @@ export default function Home() {
   if (winnerReveal && winnerReveal.outcome === "you_won")
     return (
       <main className="shell">
+        <img
+          src="/assets/noise.gif"
+          className="noise-overlay"
+          alt=""
+          aria-hidden="true"
+        />
         <div className="topline">
           <span>Asylum incident report</span>
           <span className="sigil">Case closed</span>
@@ -640,13 +646,6 @@ export default function Home() {
             </section>
           ) : (
             <div className="final-test-overlay">
-              <img
-                src="/assets/noise.gif"
-                className="noise-overlay"
-                alt=""
-                aria-hidden="true"
-              />
-
               <section className="panel final-test">
                 <div className="stamp">FINAL TEST</div>
                 <div className="question" id="final-test-title">
