@@ -619,7 +619,7 @@ export default function Home() {
             </div>
           )}
 
-          {count < 4 ? (
+          {count > 4 ? (
             <section className="panel">
               <div className="notice">
                 {message || (
@@ -640,7 +640,12 @@ export default function Home() {
             </section>
           ) : (
             <div className="final-test-overlay">
-              <div className="noise-overlay" aria-hidden="true" />
+              <img
+                src="/assets/noise.gif"
+                className="noise-overlay"
+                alt=""
+                aria-hidden="true"
+              />
 
               <section className="panel final-test">
                 <div className="stamp">FINAL TEST</div>
