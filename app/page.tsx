@@ -625,7 +625,7 @@ export default function Home() {
             </div>
           )}
 
-          {count > 4 ? (
+          {count < 4 ? (
             <section className="panel">
               <div className="notice">
                 {message || (
