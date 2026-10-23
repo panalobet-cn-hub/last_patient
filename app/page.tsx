@@ -311,7 +311,7 @@ export default function Home() {
         <span className="sigil">Incident 31.10</span>
       </div>
       <header className="hero">
-        <div className="eyebrow">Blackthorn Psychiatric Asylum · 11:47 PM</div>
+        <div className="eyebrow">Ward 404 Asylum · 11:47 PM</div>
         <h1 className="title">
           WARD
           <br />
