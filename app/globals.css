@@ -333,12 +333,54 @@ button {
   line-height: 1.5;
 }
 
-#error {
+.error-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(5px);
+}
+
+.error-modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid #8f343b;
+  box-shadow: 0 0 35px rgba(210, 74, 84, 0.2);
+  animation: errorPopup 0.25s ease-out;
+}
+
+.error-modal .error {
+  margin-bottom: 22px;
+  line-height: 1.7;
+}
+
+.error-modal .btn {
+  width: 100%;
+}
+
+@keyframes errorPopup {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* #error {
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 
 .success {
   color: #b4dba9;

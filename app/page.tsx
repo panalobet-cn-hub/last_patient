@@ -681,12 +681,29 @@ export default function Home() {
           )}
         </>
       )}
-      {message && !state.session && <p className="notice">{message}</p>}
-      {error && (
-        <section className="panel" id="error">
-          <p className="error">{error}</p>
-        </section>
+
+      {message && !state.session && (
+        <div className="error-overlay">
+          <section className="panel error-modal" id="error">
+            <p className="error">{message}</p>
+            <button className="btn" onClick={() => setMessage("")}>
+              OK
+            </button>
+          </section>
+        </div>
       )}
+
+      {error && (
+        <div className="error-overlay">
+          <section className="panel error-modal" id="error">
+            <p className="error">{error}</p>
+            <button className="btn" onClick={() => setError("")}>
+              OK
+            </button>
+          </section>
+        </div>
+      )}
+
       {/* <p className="footer">
         NO PHONE TRICKS. NO SECOND CHANCES. FOLLOW THE EVIDENCE.
       </p> */}
