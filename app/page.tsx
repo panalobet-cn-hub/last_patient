@@ -640,6 +640,8 @@ export default function Home() {
             </section>
           ) : (
             <div className="final-test-overlay">
+              <div className="noise-overlay" aria-hidden="true" />
+
               <section className="panel final-test">
                 <div className="stamp">FINAL TEST</div>
                 <div className="question" id="final-test-title">
