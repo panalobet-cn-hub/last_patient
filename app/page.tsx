@@ -573,7 +573,7 @@ export default function Home() {
                     </div>
                     <div>
                       <div className="clueTitle">
-                        Clue {n} — {name}
+                        {done ? name : `Clue ${n}`}
                       </div>
                     </div>
                     <div className="clueState">
@@ -602,9 +602,9 @@ export default function Home() {
 
                 <h2>Evidence Is Being Recorded</h2>
 
-                <p className="recording-clue">
+                {/* <p className="recording-clue">
                   CLUE {recordingClue} · CASE FILE UPDATE
-                </p>
+                </p> */}
 
                 <p className="recording-description">
                   Securing evidence and updating the investigation records...
